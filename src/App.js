@@ -1,24 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 
-function App() {
+//------------------------------------------components-------------------------------------------
+import Home from './screens/home/Home';
+import Login from './screens/login/Login';
+import { readUserToken, saveUserToken } from './utils/appFunction';
+
+//------------------------------------------components-------------------------------------------
+const realToken = '';
+// s6z8PiKcH7iVX3YyUbcVbjjlct0h8DrRDGFpZdLCov8Ij7rHbrGfU1bjUxPWmbRX
+
+const App = () => {
+  const navigate = useNavigate();
+
+  // State-----------------------------------------------------------------------
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  // Function--------------------------------------------------------------------
+  const checkLogin = () => {
+    setLoading(true);
+    const token = readUserToken();
+
+    console.log(token);
+
+    if (!token) {
+      navigate('/login');
+    } else {
+      if (token === realToken) {
+        navigate('/home');
+      } else {
+        navigate('/login');
+        setError(true);
+      }
+    }
+    setLoading(false);
+  }
+
+  // Hooks--------------------------------------------------------------------
+  useEffect(() => {
+    saveUserToken();
+    checkLogin();
+  }, []);
+
+  // App--------------------------------------------------------------------
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigate to='/login' />} />
+      <Route path="/login" element={<Login loading={loading} />} />
+      <Route path="/home" element={<Home />} />
+    </Routes>
   );
 }
 
