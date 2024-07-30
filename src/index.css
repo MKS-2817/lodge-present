@@ -4,7 +4,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     user-select: none;
-    overflow-y: hidden;
+    overflow: hidden;
+}
+
+.scroll_hide::-webkit-scrollbar {
+    width: 0px;
 }
 
 
