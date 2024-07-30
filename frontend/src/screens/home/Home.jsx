@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import Navbar from '../../components/Navbar';
 import { Link } from 'react-router-dom';
 import OpacityAnimetedPage from './../../components/animation/SetOpacityAnimatedPage';
-import { Button } from '@material-tailwind/react';
 import { AppContext } from '../../contexts/AppContext';
 
 const Home = () => {
@@ -85,9 +84,9 @@ const Home = () => {
 						to={'/createfrom'}
 					>
 
-						<Button className='bg-button w-16 h-16 rounded-2xl' style={{ color: 'white', fontSize: 20 }}>
+						<button className='bg-button w-16 h-16 rounded-2xl' style={{ color: 'white', fontSize: 20 }}>
 							<i className="fas fa-plus" />
-						</Button>
+						</button>
 
 					</Link>
 				</div>

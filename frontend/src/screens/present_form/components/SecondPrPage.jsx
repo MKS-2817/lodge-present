@@ -4,7 +4,6 @@ import Navbar from '../../../components/Navbar';
 import Button_custom from '../../../components/Button';
 import Input_custom from '../../../components/Input';
 import LeftAnimated from '../../../components/animation/SetLeftAnimated';
-import { IconButton } from '@material-tailwind/react';
 
 const SecondPrPage = () => {
 
@@ -48,9 +47,9 @@ const SecondPrPage = () => {
             to={'/createfrom'}
           >
 
-            <IconButton size="lg" className='bg-backButton rounded-full border-2'>
-              <i class="fas fa-chevron-left text-fontSize_12" />
-            </IconButton>
+            <button size="lg" className='bg-backButton rounded-full border-2'>
+              <i className="fas fa-chevron-left text-fontSize_12" />
+            </button>
 
           </Link>
 

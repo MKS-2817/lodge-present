@@ -1,10 +1,9 @@
 import React from 'react'
-import { Input, Slider } from "@material-tailwind/react";
 
-const Input_custom = ({ input_label, input_type, onChange, value }) => {
+const Input_custom = ({ onChange, value }) => {
 	return (
 		<>
-			<Input
+			<input
 				style={{
 					backgroundColor: '#BFC9C1',
 					fontSize: 22,
@@ -13,11 +12,6 @@ const Input_custom = ({ input_label, input_type, onChange, value }) => {
 					color: '#fff',
 					borderRadius: 15,
 				}}
-				variant="outlined"
-				label={input_label}
-				type={input_type}
-				color="black"
-				size="lg"
 				value={value}
 				onChange={onChange}
 			/>

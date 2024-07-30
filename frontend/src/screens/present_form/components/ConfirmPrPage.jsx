@@ -1,13 +1,11 @@
-
-
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Input_custom from '../../../components/Input';
 import Button_custom from '../../../components/Button';
 import LeftAnimated from '../../../components/animation/SetLeftAnimated';
 import Navbar from '../../../components/Navbar';
-import { IconButton } from '@material-tailwind/react';
 import { AppContext } from './../../../contexts/AppContext';
+import axios from 'axios';
 
 const ConfirmPrPage = () => {
 
@@ -29,40 +27,31 @@ const ConfirmPrPage = () => {
   const [reservationRoom, setReservationRoom] = useState('');
 
 
-  const handleFormSubmit = () => {
-    setSaveFiled(prev => {
-      if (Array.isArray(prev)) {
-        return [...prev, {
-          entrance: entrance,
-          left: left,
-          name: name,
-          lastName: lastName,
-          nationalCode: nationalCode,
-          phoneNumber: phoneNumber,
-          liveCity: liveCity,
-          job: job,
-          education: education,
-          favorites: favorite,
-          reservationRoom: reservationRoom
-        }];
-      } else {
-        return [{
-          entrance: entrance,
-          left: left,
-          name: name,
-          lastName: lastName,
-          nationalCode: nationalCode,
-          phoneNumber: phoneNumber,
-          liveCity: liveCity,
-          job: job,
-          education: education,
-          favorites: favorite,
-          reservationRoom: reservationRoom
-        }];
-      }
-    });
-    navigate('/')
-  }
+  const handleFormSubmit = async () => {
+    const newData = {
+      entrance: entrance,
+      left: left,
+      name: name,
+      lastName: lastName,
+      nationalCode: nationalCode,
+      phoneNumber: phoneNumber,
+      liveCity: liveCity,
+      job: job,
+      education: education,
+      favorite: favorite,
+      reservationRoom: reservationRoom
+    };
+
+    setSaveFiled(prev => [...prev, newData]);
+
+    try {
+      await axios.post('http://192.168.0.3:1000/update-excel', newData);
+      navigate('/');
+    } catch (error) {
+      console.error('Error updating Excel file:', error);
+    }
+  };
+
 
   useEffect(() => {
     setEntrance(data.entrance);
@@ -71,7 +60,6 @@ const ConfirmPrPage = () => {
     setLastName(data.lastName);
     setNationalCode(data.nationalCode);
     setPhoneNumber(data.phoneNumber);
-    ///////////////////////////////////////////
     setLiveCity(data.liveCity);
     setJob(data.job);
     setEducation(data.education);
@@ -84,15 +72,14 @@ const ConfirmPrPage = () => {
       <div className='bg-background_color w-full h-full overflow-hidden p-2 md:w-[50%] lg:w-[40%] xl:w-[35%]' dir='rtl'>
 
         <div className='navbar createfrom flex items-center' dir='ltr'>
-
           <Link
             className='fixed left-6 top-6 z-50'
             to={'/secondPrPage'}
           >
 
-            <IconButton size="lg" className='bg-backButton rounded-full border-2'>
+            <button className='bg-backButton rounded-full border-2'>
               <i class="fas fa-chevron-left text-fontSize_12" />
-            </IconButton>
+            </button>
 
           </Link>
 
@@ -169,7 +156,6 @@ const ConfirmPrPage = () => {
             value={reservationRoom}
             onChange={(event) => setReservationRoom(event.target.value)}
           />
-
 
           <div className='flex items-center justify-center mb-4'>
 
