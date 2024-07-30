@@ -1,0 +1,15 @@
+#md-filled-button_custom {
+	--md-sys-color-on-primary: #000;
+	--md-sys-color-primary: #21BF5B;
+	--md-filled-tonal-button-container-shape: 0px;
+	--md-filled-tonal-button-label-text-font: system-ui;
+	--md-sys-color-secondary-container: #CCE8E7;
+	--md-sys-color-on-secondary-container: #051F1F;
+	font-size: larger;
+	font-weight: bold;
+}
+
+#backButton_Custom {
+	--md-sys-color-primary: #FFD28D;
+	--md-sys-color-on-primary: #000
+}

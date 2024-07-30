@@ -21,12 +21,15 @@ module.exports = {
 
       colors: {
         // #212121
-        'background_color': '#F7E6B9',
-        'navbar_color': '#353535',
+        'background_color': '#1E1939',
+        'navbar_color': '#0C3239',
         "button": '#F86E4F',
+        'ring_color': '#F86E4F',
         'backButton': '#C77749',
         'card_color': '#facc15',
-        'text_color': '#19A86B',
+        'text_color': '#21BF5B',
+        'card_text' : '#1E1939',
+        'input_color': '#4D4F77',
         /////////////////////////////////////////////////
         'FB8C00_color': '#FB8C00',
         '006A6A_color': '#006A6A',

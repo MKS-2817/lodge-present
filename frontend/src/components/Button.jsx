@@ -1,16 +1,15 @@
 import React from 'react'
-
-const Button_custom = ({ button_text, onClick, btn_span }) => {
+import './style/style.css'
+const Button_custom = ({ button_text, onClick }) => {
 	return (
 		<>
-			<button
-				className='w-44 h-14 bg-button border-none'
-				style={{ color: 'white', fontSize: 18 }}
+			<md-filled-button
+				id="md-filled-button_custom"
 				onClick={onClick}
+				style={{ width: '12rem', height:50 }}
 			>
-				<span>{btn_span}</span>
 				{button_text}
-			</button>
+			</md-filled-button>
 		</>
 	)
 }

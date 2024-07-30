@@ -42,14 +42,13 @@ const SecondPrPage = () => {
       <div className='container bg-background_color w-full h-full p-2 overflow-hidden md:w-[50%] lg:w-[40%] xl:w-[35%]' dir='rtl'>
 
         <div className='navbar createfrom flex items-center' dir='ltr'>
-          <Link
-            className='fixed left-6 top-6 z-50'
+          <Link className='fixed left-6 top-6 z-50'
             to={'/createfrom'}
           >
 
-            <button size="lg" className='bg-backButton rounded-full border-2'>
-              <i className="fas fa-chevron-left text-fontSize_12" />
-            </button>
+            <md-filled-icon-button id='backButton_Custom'>
+              <md-icon>keyboard_arrow_left</md-icon>
+            </md-filled-icon-button>
 
           </Link>
 
@@ -59,34 +58,39 @@ const SecondPrPage = () => {
         </div>
 
 
-        <div className='body flex flex-col gap-8 mt-12 px-2'>
+        <div className='body flex flex-col mt-12 px-2'>
 
 
           <Input_custom
+            placeholder={' شهر سکونت '}
             input_label={' شهر سکونت '}
             value={liveCity}
             onChange={(event) => setLiveCity(event.target.value)}
           />
 
           <Input_custom
+            placeholder={' شغل '}
             input_label={' شغل '}
             value={job}
             onChange={(event) => setJob(event.target.value)}
           />
 
           <Input_custom
+            placeholder={' تحصیلات '}
             input_label={' تحصیلات '}
             value={education}
             onChange={(event) => setEducation(event.target.value)}
           />
 
           <Input_custom
+            placeholder={' علایق '}
             input_label={' علایق '}
             value={favorite}
             onChange={(event) => setFavorite(event.target.value)}
           />
 
           <Input_custom
+            placeholder={' اتاق رزرو '}
             input_label={' اتاق رزرو '}
             value={reservationRoom}
             onChange={(event) => setReservationRoom(event.target.value)}
@@ -95,7 +99,7 @@ const SecondPrPage = () => {
 
         </div>
 
-        <div className='flex items-center justify-center absolute bottom-16 left-0 right-0'>
+        <div className='flex items-center justify-center absolute bottom-10 left-0 right-0'>
 
           <Button_custom
             button_text={' تایید '}

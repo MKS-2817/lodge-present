@@ -40,9 +40,9 @@ const PresentForm = () => {
             to={'/'}
           >
 
-            <button size="lg" className='bg-backButton rounded-full border-2'>
-              <i className="fas fa-chevron-left text-fontSize_12" />
-            </button>
+            <md-filled-icon-button id='backButton_Custom'>
+              <md-icon>keyboard_arrow_left</md-icon>
+            </md-filled-icon-button>
 
           </Link>
 
@@ -52,33 +52,38 @@ const PresentForm = () => {
           />
         </div>
 
-        <div className='body flex flex-col gap-8 mt-6 px-2'>
+        <div className='body flex flex-col mt-6 px-2'>
 
           <Input_custom
+            placeholder={' تاریخ ورود '}
             input_label={' تاریخ ورود '}
             value={entrance}
             onChange={(event) => setEntrance(event.target.value)}
           />
 
           <Input_custom
+            placeholder={' تاریخ خروج '}
             input_label={' تاریخ خروج '}
             value={left}
             onChange={(event) => setLeft(event.target.value)}
           />
 
           <Input_custom
+            placeholder={' نام '}
             input_label={' نام '}
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
 
           <Input_custom
+            placeholder={' نام خانوادگی '}
             input_label={' نام خانوادگی '}
             value={lastName}
             onChange={(event) => setLastName(event.target.value)}
           />
 
           <Input_custom
+            placeholder={' کد ملی '}
             input_label={' کد ملی '}
             input_type={'number'}
             value={nationalCode}
@@ -86,6 +91,7 @@ const PresentForm = () => {
           />
 
           <Input_custom
+            placeholder={' شماره تماس '}
             input_label={' شماره تماس '}
             input_type={'number'}
             value={phoneNumber}
@@ -94,7 +100,7 @@ const PresentForm = () => {
 
         </div>
 
-        <div className='flex items-center justify-center absolute bottom-16 left-0 right-0'>
+        <div className='flex items-center justify-center fixed bottom-10 left-0 right-0'>
 
           <Button_custom
             button_text={' تایید '}

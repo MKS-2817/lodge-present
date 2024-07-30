@@ -1,0 +1,12 @@
+#fab-custom_1 {
+	--md-sys-color-surface-container-high: #21BF5B;
+	--md-sys-color-on-surface: #000;
+	--md-sys-color-primary: #16101C;
+	--md-fab-icon-size: 30px;
+	--md-fab-large-small-icon-size: 500px
+}
+
+#fab-custom_2 {
+	width: 90px;
+	height: 90px;
+}
