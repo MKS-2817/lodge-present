@@ -6,6 +6,7 @@ import LeftAnimated from '../../../components/animation/SetLeftAnimated';
 import Navbar from '../../../components/Navbar';
 import { AppContext } from './../../../contexts/AppContext';
 import axios from 'axios';
+import { apiURLs } from '../../../services/apiURL';
 
 const ConfirmPrPage = () => {
 
@@ -42,12 +43,11 @@ const ConfirmPrPage = () => {
       reservationRoom: reservationRoom
     };
 
-
-
     try {
-      const response = await axios.post('https://d02a-83-121-122-227.ngrok-free.app/update-excel', newData);
+      
+      const response = await axios.post(`${apiURLs.serverURL}/create-passengers`, newData); 
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         setSaveFiled(prev => [...prev, newData]);
         navigate('/');
       } else {
@@ -59,7 +59,6 @@ const ConfirmPrPage = () => {
       console.error('Error updating Excel file:', error);
     }
   };
-
 
   useEffect(() => {
     setEntrance(data.entrance);
@@ -76,7 +75,7 @@ const ConfirmPrPage = () => {
   }, []);
 
   return (
-    <LeftAnimated motion_div_className={'bg-background_color w-full h-dvh flex justify-center pt-24'}>
+    <LeftAnimated motion_div_className={'bg-background_color w-full h-dvh flex justify-center overflow-hidden pt-24'}>
       <div className='bg-background_color w-full h-full overflow-hidden px-2 md:w-[50%] lg:w-[40%] xl:w-[35%]' dir='rtl'>
 
         <div className='navbar createfrom flex items-center' dir='ltr'>
@@ -176,7 +175,7 @@ const ConfirmPrPage = () => {
             onChange={(event) => setReservationRoom(event.target.value)}
           />
 
-          <div className='flex items-center justify-center mb-4 mt-4'>
+          <div className='flex items-center justify-center mb-4 mt-16'>
 
             <Button_custom
               button_text={' تایید '}

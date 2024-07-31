@@ -38,7 +38,7 @@ const SecondPrPage = () => {
 
 
   return (
-    <LeftAnimated motion_div_className={'bg-background_color w-full h-dvh flex justify-center pt-16'}>
+    <LeftAnimated motion_div_className={'bg-background_color w-full h-dvh flex justify-center overflow-hidden pt-16'}>
       <div className='container bg-background_color w-full h-full p-2 overflow-hidden md:w-[50%] lg:w-[40%] xl:w-[35%]' dir='rtl'>
 
         <div className='navbar createfrom flex items-center' dir='ltr'>

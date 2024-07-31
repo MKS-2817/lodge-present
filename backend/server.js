@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 
 const updateExcelFile = async (data) => {
@@ -32,11 +32,22 @@ const updateExcelFile = async (data) => {
   await workbook.xlsx.writeFile(FILE_PATH);
 };
 
-app.get('', (req, res) => {
-  res.send('TR')
-})
+app.get('/passengers', (req, res) => {
+  const jsonFilePath = path.join(__dirname, 'db.json');
 
-app.post('/update-excel', (req, res) => {
+  // Read existing JSON data if file exists
+  if (fs.existsSync(jsonFilePath)) {
+    const jsonDataContent = fs.readFileSync(jsonFilePath);
+    const jsonData = JSON.parse(jsonDataContent);
+    console.log('Existing JSON data:', jsonData);
+    res.status(200).json(jsonData);
+  } else {
+    res.status(404).json([]);
+  }
+});
+
+
+app.post('/create-passengers', (req, res) => {
   const inputData = req.body;
   console.log('Received data:', inputData);
 
@@ -90,7 +101,28 @@ app.post('/update-excel', (req, res) => {
   XLSX.writeFile(workbook, filePath);
   console.log('Excel file updated and written to disk');
 
-  res.send('Excel file updated successfully');
+  ////////////////////////////////////////Append to JSON/////////////////////////////////////
+
+  const jsonFilePath = path.join(__dirname, 'db.json');
+  let jsonData = [];
+
+  // Read existing JSON data if file exists
+  if (fs.existsSync(jsonFilePath)) {
+    const jsonDataContent = fs.readFileSync(jsonFilePath);
+    jsonData = JSON.parse(jsonDataContent);
+    console.log('Existing JSON data:', jsonData);
+  }
+
+  // Append new data to JSON array
+  jsonData.push(inputData);
+
+  // Write updated JSON data back to file
+  fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2));
+  console.log('JSON file updated and written to disk');
+
+  ////////////////////////////////////////Append to JSON/////////////////////////////////////
+
+  res.status(201).send('Excel file and JSON file updated successfully');
 });
 
 app.listen(PORT, () => {

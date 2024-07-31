@@ -1,16 +1,35 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar';
 import { Link } from 'react-router-dom';
 import OpacityAnimetedPage from './../../components/animation/SetOpacityAnimatedPage';
-import { AppContext } from '../../contexts/AppContext';
 import './style/home.css';
+import axios from 'axios';
+import { apiURLs } from '../../services/apiURL';
+
+
 
 const Home = () => {
 
-	const { saveFiled } = useContext(AppContext);
+	const [getPassengers, setPassengers] = useState([]);
+
+	useEffect(() => {
+		const getData = async () => {
+			try {
+				const { data: fetchPassengers } = await axios.get(`${apiURLs.serverURL}/passengers`);
+				console.log('Passengers', fetchPassengers)
+				setPassengers(fetchPassengers);
+
+			} catch (error) {
+				alert(error.message);
+			}
+		}
+
+		getData();
+	}, [])
+
 
 	return (
-		<OpacityAnimetedPage motion_div_className={'bg-background_color w-full h-dvh flex justify-center overflow-hidden pt-24'}>
+		<OpacityAnimetedPage motion_div_className={'bg-background_color w-full h-dvh flex justify-center overflow-hidden '}>
 
 			<img
 				className='fixed w-dvh h-full object-cover blur-sm'
@@ -18,7 +37,7 @@ const Home = () => {
 				alt="shape.jpg"
 			/>
 
-			<div className='container h-full md:w-[50%] lg:w-[40%] xl:w-[35%] overflow-hidden'>
+			<div className='container h-full md:w-[50%] lg:w-[40%] xl:w-[35%] overflow-hidden pt-24'>
 
 				<Navbar
 					titr={' گیلانه جان '}
@@ -27,7 +46,7 @@ const Home = () => {
 
 				<div className='scroll_hide w-full h-full flex flex-col gap-8 px-10 overflow-y-scroll pb-56 pt-4' dir='rtl'>
 					{
-						saveFiled.map((item, index) => (
+						getPassengers.map((item, index) => (
 
 							<div className='w-full h-36 p-2 flex items-center justify-between gap-2 bg-white/30 border border-white rounded-3xl backdrop-blur-3xl shadow-lg'
 								key={index}

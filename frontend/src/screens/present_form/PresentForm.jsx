@@ -31,7 +31,7 @@ const PresentForm = () => {
   }
 
   return (
-    <LeftAnimated motion_div_className={'bg-background_color w-full h-dvh flex justify-center pt-24'}>
+    <LeftAnimated motion_div_className={'bg-background_color w-full h-dvh flex justify-center overflow-hidden pt-24'}>
       <div className='container w-full h-full p-2 overflow-hidden md:w-[50%] lg:w-[40%] xl:w-[35%]' dir='rtl'>
 
         <div className='navbar createfrom flex items-center' dir='ltr'>
@@ -85,7 +85,7 @@ const PresentForm = () => {
           <Input_custom
             placeholder={' کد ملی '}
             input_label={' کد ملی '}
-            input_type={'number'}
+            type={'number'}
             value={nationalCode}
             onChange={(event) => setNationalCode(event.target.value)}
           />
@@ -93,7 +93,7 @@ const PresentForm = () => {
           <Input_custom
             placeholder={' شماره تماس '}
             input_label={' شماره تماس '}
-            input_type={'number'}
+            type={'number'}
             value={phoneNumber}
             onChange={(event) => setPhoneNumber(event.target.value)}
           />

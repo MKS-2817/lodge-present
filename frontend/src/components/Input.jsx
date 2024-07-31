@@ -1,7 +1,7 @@
 import React from 'react'
 import './style/style.css';
 
-const Input_custom = ({ onChange, value, placeholder }) => {
+const Input_custom = ({ onChange, value, placeholder, type }) => {
 	return (
 		<>
 			<input
@@ -9,6 +9,7 @@ const Input_custom = ({ onChange, value, placeholder }) => {
 				placeholder={placeholder}
 				value={value}
 				onChange={onChange}
+				type={type}
 			/>
 		</>
 	)
