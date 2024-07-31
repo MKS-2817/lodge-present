@@ -44,8 +44,18 @@ const ConfirmPrPage = () => {
     };
 
     try {
-      
-      const response = await axios.post(`${apiURLs.serverURL}/create-passengers`, newData); 
+      const headres = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': '1',
+      }
+      const response = await axios.post(
+        `${apiURLs.serverURL}/create-passengers`,
+        newData,
+        {
+          headers: headres
+        }
+      );
 
       if (response.status === 201) {
         setSaveFiled(prev => [...prev, newData]);

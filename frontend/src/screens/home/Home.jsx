@@ -14,10 +14,27 @@ const Home = () => {
 
 	useEffect(() => {
 		const getData = async () => {
+			const headres = {
+				'accept': 'application/json',
+				'Content-Type': 'application/json',
+				'ngrok-skip-browser-warning': '1',
+			}
 			try {
-				const { data: fetchPassengers } = await axios.get(`${apiURLs.serverURL}/passengers`);
-				console.log('Passengers', fetchPassengers)
-				setPassengers(fetchPassengers);
+				const {
+					data: fetchPassengers,
+					status
+				} = await axios.get(
+					`${apiURLs.serverURL}/passengers`,
+					{
+						headers: headres
+					}
+				);
+
+				if (status === 200) {
+					setPassengers(fetchPassengers);
+				} else {
+					alert(status);
+				}
 
 			} catch (error) {
 				alert(error.message);
@@ -54,24 +71,24 @@ const Home = () => {
 								<div className='flex flex-col justify-center gap-8 w-1/2 h-32 text-center rounded-3xl'>
 
 									<div
-										className='w-full flex flex-col items-center justify-center text-fontSize_12'
+										className='w-full flex flex-col items-center justify-center text-fontSize_12 line-clamp-3'
 									>
 										نام نام خانوادگی :
-										<p className='flex gap-2 text-fontSize_14 font-bold'>
+										<p className='flex gap-2 text-fontSize_14 font-bold '>
 											<span className='text-card_text'>{item.name}</span>
 											<span className='text-card_text'>{item.lastName}</span>
 										</p>
 									</div>
 
 									<p
-										className=' w-full flex flex-col text-fontSize_12'
+										className=' w-full flex flex-col text-fontSize_12 line-clamp-3'
 									>
 										اتاق رزرو :
 										<span className='text-card_text text-fontSize_14 font-bold'>{item.reservationRoom}</span>
 									</p>
 								</div>
 
-								<div className='flex flex-col justify-center gap-8 w-1/2 h-32 text-center rounded-3xl text-fontSize_12'>
+								<div className='flex flex-col justify-center gap-8 w-1/2 h-32 text-center rounded-3xl text-fontSize_12 line-clamp-3'>
 									<p
 										className=' w-full flex flex-col'
 									>
