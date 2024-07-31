@@ -26,6 +26,7 @@ const ConfirmPrPage = () => {
   const [education, setEducation] = useState('');
   const [favorite, setFavorite] = useState('');
   const [reservationRoom, setReservationRoom] = useState('');
+  const [birthday, setBirthday] = useState('');
 
 
   const handleFormSubmit = async () => {
@@ -35,6 +36,7 @@ const ConfirmPrPage = () => {
       name: name,
       lastName: lastName,
       nationalCode: nationalCode,
+      birthday: birthday,
       phoneNumber: phoneNumber,
       liveCity: liveCity,
       job: job,
@@ -76,6 +78,7 @@ const ConfirmPrPage = () => {
     setName(data.name);
     setLastName(data.lastName);
     setNationalCode(data.nationalCode);
+    setBirthday(data.birthday);
     setPhoneNumber(data.phoneNumber);
     setLiveCity(data.liveCity);
     setJob(data.job);

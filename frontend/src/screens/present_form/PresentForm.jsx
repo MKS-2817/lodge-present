@@ -15,7 +15,7 @@ const PresentForm = () => {
   const [lastName, setLastName] = useState('');
   const [nationalCode, setNationalCode] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-
+  const [birthday, setBirthday] = useState('');
 
   const handleFormSubmit = () => {
     const data = {
@@ -24,7 +24,8 @@ const PresentForm = () => {
       name: name,
       lastName: lastName,
       nationalCode: nationalCode,
-      phoneNumber: phoneNumber
+      phoneNumber: phoneNumber,
+      birthday: birthday
     }
 
     navigate('/secondPrPage', { state: { data: data } });
@@ -88,6 +89,13 @@ const PresentForm = () => {
             type={'number'}
             value={nationalCode}
             onChange={(event) => setNationalCode(event.target.value)}
+          />
+
+          <Input_custom
+            placeholder={' تاریخ تولد '}
+            input_label={' تاریخ تولد '}
+            value={birthday}
+            onChange={(event) => setBirthday(event.target.value)}
           />
 
           <Input_custom

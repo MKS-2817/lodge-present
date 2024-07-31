@@ -63,7 +63,7 @@ const Home = () => {
 
 				<div className='scroll_hide w-full h-full flex flex-col gap-8 px-10 overflow-y-scroll pb-56 pt-4' dir='rtl'>
 					{
-						getPassengers.map((item, index) => (
+						getPassengers.reverse().map((item, index) => (
 
 							<div className='w-full h-36 p-2 flex items-center justify-between gap-2 bg-white/30 border border-white rounded-3xl backdrop-blur-3xl shadow-lg'
 								key={index}

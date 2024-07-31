@@ -8,6 +8,7 @@ export const AppContext = createContext({
 		name: '',
 		lastName: '',
 		nationalCode: '',
+		birthday: '',
 		phoneNumber: '',
 		liveCity: '',
 		job: '',

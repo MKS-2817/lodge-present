@@ -16,22 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-const updateExcelFile = async (data) => {
-  const workbook = new ExcelJS.Workbook();
-  let worksheet;
-
-  Object.keys(data).forEach(key => {
-    const column = worksheet.getColumn(key);
-    let rowIndex = 1;
-    while (column.values[rowIndex] !== undefined) {
-      rowIndex++;
-    }
-    column.values[rowIndex] = data[key];
-  });
-
-  await workbook.xlsx.writeFile(FILE_PATH);
-};
-
 app.get('/passengers', (req, res) => {
   const jsonFilePath = path.join(__dirname, 'db.json');
 
@@ -68,7 +52,7 @@ app.post('/create-passengers', (req, res) => {
   if (!worksheet) {
     worksheet = XLSX.utils.aoa_to_sheet([[
       'ورود', 'خروج', 'نام',
-      'نام خانوادگی', 'کد ملی', 'شماره تلفن',
+      'نام خانوادگی', 'کد ملی','تاریخ تولد', 'شماره تلفن',
       'شهر اصلات', 'شغل', 'تحصیلات',
       'علایق', 'اتاق رزرو'
     ]]);
@@ -85,6 +69,7 @@ app.post('/create-passengers', (req, res) => {
     inputData.name,
     inputData.lastName,
     inputData.nationalCode,
+    inputData.birthday,
     inputData.phoneNumber,
     inputData.liveCity,
     inputData.job,
